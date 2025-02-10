@@ -1,0 +1,193 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
+
+const errorMessages = [
+  {
+    title: "🚀 Lost in Space",
+    description:
+      "Looks like this page has drifted into the cosmic void. Try navigating back to mission control!",
+  },
+  {
+    title: "🌌 A Black Hole Swallowed This Page",
+    description:
+      "We searched the galaxy, but this page has vanished beyond the event horizon.",
+  },
+  {
+    title: "🛰️ Signal Lost",
+    description:
+      "Your request went out, but we lost communication. Try a different trajectory!",
+  },
+  {
+    title: "🌠 Page Not Found – Just Like Dark Matter",
+    description:
+      "Scientists are still searching for it. Maybe try another path?",
+  },
+  {
+    title: "👽 Page Abducted by Aliens",
+    description:
+      "We sent a distress signal, but it's gone into another dimension.",
+  },
+  {
+    title: "☄️ 404: Page Burned Up on Reentry",
+    description:
+      "Unfortunately, this one didn’t survive atmospheric entry. Try another search!",
+  },
+  {
+    title: "🪐 You’ve Landed on the Wrong Planet",
+    description:
+      "This isn’t the page you were looking for. Maybe try another orbit?",
+  },
+  {
+    title: "🌓 A Page in the Dark Side of the Moon",
+    description: "We know it exists, but we can’t seem to find it right now.",
+  },
+  {
+    title: "💫 Wormhole Error",
+    description:
+      "You took a shortcut through the universe, but it led nowhere. Try again!",
+  },
+  {
+    title: "🌎 Page Not Found – Must’ve Left the Solar System",
+    description:
+      "We checked every planet, but this page has gone interstellar.",
+  },
+  {
+    title: "🌍 Ground Control to Major Oops",
+    description:
+      "We’ve lost contact with this page. Try returning to home base!",
+  },
+  {
+    title: "🌞 This Page Has Gone Supernova",
+    description: "It was here once, but now it’s just stardust.",
+  },
+  {
+    title: "🛸 UFO Detected – But Not This Page",
+    description: "We found aliens, but not what you were looking for!",
+  },
+  {
+    title: "🚀 Error 404: Mission Aborted",
+    description: "This page didn’t make it past the launch sequence.",
+  },
+  {
+    title: "🌌 Page Lost in the Cosmic Web",
+    description: "Somewhere between galaxies, but not here.",
+  },
+  {
+    title: "💥 Big Bang Error – Page Never Existed",
+    description: "Looks like this one wasn’t part of the universe’s creation.",
+  },
+  {
+    title: "🛰️ 404: Satellite Lost Connection",
+    description: "We tried pinging the page, but got nothing back.",
+  },
+  {
+    title: "🕳️ Page Fell into a Wormhole",
+    description: "It must have traveled to another dimension.",
+  },
+  {
+    title: "🌓 The Page is on the Far Side of the Moon",
+    description: "And unfortunately, we can’t see it from here.",
+  },
+  {
+    title: "☄️ 404: Page Disintegrated Like a Meteor",
+    description: "A flash of light, and now it’s gone.",
+  },
+  {
+    title: "🌠 Shooting Star Error – Blink and It’s Gone",
+    description: "You may have just missed it. Try again!",
+  },
+  {
+    title: "🔭 Looking for This Page? So Are We!",
+    description: "Even our most powerful telescope can’t find it.",
+  },
+  {
+    title: "🚀 Page Took Off to Another Galaxy",
+    description: "Maybe it’ll return in a few million years.",
+  },
+  {
+    title: "🌙 Page is Just a Lunar Mirage",
+    description: "It looked real, but it’s just an illusion.",
+  },
+  {
+    title: "🛰️ Transmission Interrupted",
+    description: "Your request was sent into deep space and never came back.",
+  },
+  {
+    title: "🛸 This Page Was Beamed Up",
+    description: "Aliens must have found it interesting!",
+  },
+  {
+    title: "🌎 You’ve Drifted Too Far from Home",
+    description: "Let’s set course back to familiar territory.",
+  },
+  {
+    title: "🕳️ Black Hole Alert! Page Has Been Consumed",
+    description: "Not even light can escape this one.",
+  },
+  {
+    title: "🔄 404: Space-Time Error",
+    description: "Something went wrong in the time-space continuum.",
+  },
+  {
+    title: "🌌 Lost in the Andromeda Mist",
+    description: "This page is somewhere out there, just not here.",
+  },
+  {
+    title: "☄️ Cosmic Dust Took Over",
+    description: "This page faded into space history.",
+  },
+  {
+    title: "📡 Searching... Still No Signal",
+    description: "We’ve scanned all frequencies, but no response.",
+  },
+];
+
+const getRandomError = () => {
+  const randomIndex = Math.floor(Math.random() * errorMessages.length);
+  return errorMessages[randomIndex];
+};
+
+const randomError = getRandomError();
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+  </head>
+  <body class="text-gray-800 antialiased dark:bg-gray-900 dark:text-gray-400">
+    <Header />
+
+    <img
+      src="/astronaut-summer-floating-beach-with-balloon.svg"
+      alt="Astronaut summer floating beach with balloon"
+      loading="eager"
+      width="300"
+      height="300"
+      decoding="async"
+      class="animate-wiggle mx-auto mb-5"
+    />
+
+    <div
+      class="container text-center px-8 mx-auto xl:px-5 max-w-screen-lg py-5 lg:py-8"
+    >
+      <h1
+        class="text-brand-primary mb-3 mt-2 text-center text-3xl font-semibold tracking-tight dark:text-white lg:text-4xl lg:leading-snug"
+      >
+        {randomError.title}
+      </h1>
+      <div class="text-center">
+        <p class="text-lg">{randomError.description}</p>
+      </div>
+      <button
+        class="mt-4 py-4 font-semibold text-white transition-colors bg-gray-900 rounded-md hover:bg-gray-800 focus:outline-none focus:ring-offset-2 focus:ring focus:ring-gray-200 px-7 dark:bg-white dark:text-black"
+        >Back to Earth</button
+      >
+    </div>
+
+    <Footer />
+  </body>
+</html>

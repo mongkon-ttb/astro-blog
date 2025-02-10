@@ -1,0 +1,39 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+  </head>
+  <body class="text-gray-800 antialiased dark:bg-gray-900 dark:text-gray-400">
+    <Header />
+<div class="container px-8 mx-auto xl:px-5  max-w-screen-lg py-5 lg:py-8">
+	<h1 class="text-brand-primary mb-3 mt-2 text-center text-3xl font-semibold tracking-tight dark:text-white lg:text-4xl lg:leading-snug">About</h1>
+	<div class="text-center">
+	   <p class="text-lg">We are a small passionate team that love sharing content.</p>
+	</div>
+	<div class="text-center">
+		<p class="text-lg">Let's build the beautiful planet.</p>
+	 </div>
+	<div class="prose mx-auto mt-14 text-center dark:prose-invert">
+		<img
+		src="/astronaut-playing-with-planet-rocket.svg"
+		alt="Astronaut playing with planet rocket"
+		loading="eager"
+		width="400"
+		height="400"
+		decoding="async"
+		class="mx-auto mb-5"
+	  />
+	</div>
+ </div>
+     
+    <Footer />
+  </body>
+</html>
+

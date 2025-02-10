@@ -1,0 +1,41 @@
+---
+import BaseHead from "../../components/BaseHead.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import { SITE_TITLE, SITE_DESCRIPTION } from "../../consts";
+import { getCollection } from "astro:content";
+import Card from "../../components/Card.astro";
+
+const posts = (await getCollection("blog")).sort(
+  (a, b) => b.data.updateDate.valueOf() - a.data.updateDate.valueOf()
+);
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+  </head>
+  <body class="text-gray-800 antialiased dark:bg-gray-900 dark:text-gray-400">
+    <Header />
+    
+		<div class="container px-8 mx-auto xl:px-5 max-w-screen-lg py-5 lg:py-8">
+			<div class="mt-10 grid gap-10 md:grid-cols-3 lg:gap-10 xl:grid-cols-3">
+          {
+            posts.map((post) => (
+              <Card
+                title={post.data.title}
+                description={post.data.description}
+                category={post.data.category}
+                imgSrc={post.data.heroImage!}
+                href={`/blog/${post.id}/`}
+                author="Mario Sanchez"
+              />
+            ))
+          }
+		  </div>
+        </div>
+     
+    <Footer />
+  </body>
+</html>

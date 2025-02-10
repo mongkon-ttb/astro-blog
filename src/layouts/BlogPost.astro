@@ -1,0 +1,121 @@
+---
+import type { CollectionEntry } from "astro:content";
+import BaseHead from "../components/BaseHead.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+
+type Props = CollectionEntry<"blog">["data"];
+
+const { title, description, category, createDate, tags } =
+  Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <BaseHead title={title} description={description} />
+	<link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Prompt:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link href="/prism-one-light.css" rel="stylesheet" />
+	<link href="/blog.css" rel="stylesheet" />
+
+  </head>
+
+  <body class="text-gray-800 antialiased dark:bg-black dark:text-gray-400">
+    <Header />
+    <main>
+      <article>
+        <div
+          class="container px-8 mx-auto xl:px-5 max-w-screen-lg py-5 lg:py-8 !pt-0"
+        >
+          <div class="mx-auto max-w-screen-md">
+            <div class="flex justify-center">
+              <div class="flex gap-3">
+                <a href="/category/technology"
+                  ><span
+                    class="inline-block text-xs font-medium tracking-wider uppercase mt-5 text-blue-600"
+                    >{category}</span
+                  ></a
+                >
+              </div>
+            </div><h1
+              class="text-brand-primary mb-3 mt-2 text-center text-3xl font-semibold tracking-tight dark:text-white lg:text-4xl lg:leading-snug"
+            >
+              {title}
+            </h1>
+
+            <div class="mt-3 flex justify-center space-x-3 text-gray-500">
+              <div class="flex items-center gap-3">
+                <div class="relative h-10 w-10 flex-shrink-0">
+                  <a href="/author/mario-sanchez"
+                    ><img
+                      alt="Mario Sanchez"
+                      loading="lazy"
+                      decoding="async"
+                      data-nimg="fill"
+                      class="rounded-full object-cover"
+                      sizes="40px"
+                      src="https://gravatar.com/avatar/838f96b68a13d1061c3d4bd54b7f87908c5cbffb4afd496359585541cd0ecab0?s=80"
+                      style="position: absolute; height: 100%; width: 100%; inset: 0px; color: transparent;"
+                    /></a
+                  >
+                </div><div>
+                  <p class="text-gray-800 dark:text-gray-400">
+                    <a href="/author/mario-sanchez">Mario Sanchez</a>
+                  </p><div class="flex items-center space-x-2 text-sm">
+                    <time class="text-gray-500 dark:text-gray-400"
+                      >{
+                        createDate.toLocaleDateString("en-us", {
+                          year: "numeric",
+                          month: "short",
+                          day: "numeric",
+                        })
+                      }</time
+                    >&nbsp;•&nbsp;<span>999 mins read</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- {
+          heroImage && (
+            <div class="relative z-0 mx-auto aspect-video max-w-screen-lg overflow-hidden lg:rounded-lg">
+              <img
+                alt="Thumbnail"
+                loading="eager"
+                decoding="async"
+                data-nimg="fill"
+                class="object-cover"
+                sizes="100vw"
+                src={heroImage}
+                style="position: absolute; height: 100%; width: 100%; inset: 0px; color: transparent;"
+              />
+            </div>
+          )
+        } -->
+
+        <div
+          class="container px-8 mx-auto xl:px-5 max-w-screen-lg py-5 lg:py-8"
+        >
+          <slot />
+        </div>
+
+        <div class="container px-8 mx-auto xl:px-5 max-w-screen-lg py-5 lg:py-8">
+          <div class="flex flex-wrap gap-2">
+            {tags.sort().map(tag => (
+              <span class="inline-block bg-gray-200 text-gray-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-gray-300">
+              #{tag}
+              </span>
+            ))}
+          </div>
+        </div>
+      </article>
+    </main>
+    <Footer />
+  </body>
+</html>
